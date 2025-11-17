@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+/* 
+   1. CHILD SELECTOR: >
+   */
+
+/* Only direct child of .parent will be red */
+.parent > .child {
+  background-color: #ffcccc; /* Light red */
+  padding: 10px;
+  margin: 5px;
+}
+
+/* 
+   2. DESCENDANT SELECTOR: space
+    */
+
+/* Any .descendant inside .ancestor at any level will be yellow */
+.ancestor .descendant {
+  background-color: #ffff99; /* Light yellow */
+  padding: 10px;
+  margin: 5px;
+}
+
+/* 
+   3. MULTIPLE SELECTORS: ,
+    */
+
+/* Apply same style to multiple selectors at once */
+.box1, .text1 {
+  background-color: #99ccff; /* Light blue */
+  padding: 10px;
+  margin: 5px;
+}
+
+/* Different style for box2 only */
+.box2 {
+  background-color: #ccffcc; /* Light green */
+  padding: 10px;
+  margin: 5px;
+}

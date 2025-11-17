@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CSS Positioning — Demo</title>
+  <style>
+    /* Basic page layout */
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa6bf; --accent:#7dd3fc;
+      --pad:18px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color: #e6eef8;
+    }
+    body{
+      margin:0; background:linear-gradient(180deg,#071029 0%, #081225 60%);
+      min-height:100vh; padding:30px; box-sizing:border-box;
+    }
+    h1{margin:0 0 8px 0; font-size:20px}
+    p.lead{margin:0 0 20px 0; color:var(--muted)}
+
+    /* Layout grid for examples */
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+          border:1px solid rgba(255,255,255,0.03); padding:var(--pad); border-radius:12px; box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .card h2{font-size:16px; margin:0 0 10px 0}
+    .explain{color:var(--muted); font-size:13px; margin-bottom:12px}
+
+    /* Example area common styles */
+    .example{background:linear-gradient(180deg,#071428,#082033); border-radius:8px; padding:14px; min-height:140px; position:relative; overflow:hidden; border:1px dashed rgba(255,255,255,0.03)}
+    .box{width:90px; height:60px; display:flex; align-items:center; justify-content:center; border-radius:6px; background:linear-gradient(180deg,var(--accent), #38bdf8); color:#012; font-weight:700}
+
+    /* Static (default) */
+    .static .box{position:static}
+
+    /* Relative example: offset without leaving flow */
+    .relative .box{position:relative; left:20px; top:10px}
+
+    /* Absolute: positioned relative to nearest positioned ancestor (.abs-root). Put .abs-root position:relative */
+    .abs-root{position:relative; height:160px; border-radius:6px; background:linear-gradient(180deg,#051223,#07172a); padding:10px}
+    .absolute .box{position:absolute; right:12px; bottom:12px}
+
+    /* Fixed: positioned relative to viewport */
+    .fixed-demo{height:140px}
+    .fixed .box{position:fixed; left:30px; top:30px; z-index:9999}
+    /* show a small note so user knows it's fixed; the box will stay while page scrolls */
+
+    /* Sticky: sticks inside scrolling container when reaching threshold */
+    .long{height:380px; overflow:auto; padding:10px; background:linear-gradient(180deg,#031226,#031526); border-radius:8px}
+    .sticky .box{position:sticky; top:8px}
+
+    /* z-index layering demo */
+    .layer-demo{height:160px; display:flex; align-items:center; justify-content:center; gap:10px}
+    .layer-demo .box{width:90px; height:90px}
+    .box.one{background:#f87171; position:relative; z-index:10}
+    .box.two{background:#fbbf24; position:relative; left:-40px; top:10px; z-index:5}
+    .box.three{background:#60a5fa; position:relative; left:-80px; top:20px; z-index:1}
+
+    /* small code block */
+    pre{background:#041028; color:var(--muted); padding:10px; border-radius:6px; font-size:12px; overflow:auto}
+
+    footer{margin-top:22px; color:var(--muted); font-size:13px}
+
+    /* small responsive tweak */
+    @media (max-width:420px){ .box{width:72px; height:50px; font-size:12px} }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CSS Positioning — Interactive Demo</h1>
+    <p class="lead">Examples of <code>static</code>, <code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code> and <code>z-index</code>. Each card shows a live demo and a short code snippet you can copy.</p>
+  </header>
+
+  <main class="grid">
+    <!-- Static -->
+    <section class="card">
+      <h2>Static (default)</h2>
+      <p class="explain">No positioning applied — elements follow normal flow.</p>
+      <div class="example static">
+        <div class="box">static</div>
+      </div>
+      <pre>&lt;div class="box"&gt;static&lt;/div&gt; /* position: static (default) */</pre>
+    </section>
+
+    <!-- Relative -->
+    <section class="card">
+      <h2>Relative</h2>
+      <p class="explain">Moved relative to itself; still occupies original space in the layout.</p>
+      <div class="example relative">
+        <div class="box">relative</div>
+      </div>
+      <pre>.relative .box{ position: relative; left: 20px; top: 10px; }</pre>
+    </section>
+
+    <!-- Absolute -->
+    <section class="card">
+      <h2>Absolute</h2>
+      <p class="explain">Removed from document flow and positioned against the nearest positioned ancestor.</p>
+      <div class="example abs-root absolute">
+        <div style="color:var(--muted); font-size:12px; margin-bottom:8px">ancestor has <code>position:relative</code></div>
+        <div class="box">absolute</div>
+      </div>
+      <pre>.abs-root{ position: relative; } 
+.absolute .box{ position: absolute; right: 12px; bottom: 12px; }</pre>
+    </section>
+
+    <!-- Fixed -->
+    <section class="card">
+      <h2>Fixed</h2>
+      <p class="explain">Positioned relative to the viewport — it stays when the page scrolls.</p>
+      <div class="example fixed-demo fixed">
+        <div style="color:var(--muted); font-size:12px; margin-bottom:8px">Try scrolling the page — this stays in place.</div>
+        <div class="box">fixed</div>
+      </div>
+      <pre>.fixed .box{ position: fixed; left: 30px; top: 30px; }</pre>
+    </section>
+
+    <!-- Sticky -->
+    <section class="card">
+      <h2>Sticky</h2>
+      <p class="explain">Acts like relative until the container scrolls — then it 'sticks' to the given offset.</p>
+      <div class="example long sticky">
+        <div style="height:20px; color:var(--muted); font-size:12px; margin-bottom:8px">Scroll inside this box to see sticky behavior.</div>
+        <div style="height:300px; padding:6px; background:transparent">
+          <div class="box">I stick</div>
+          <div style="height:220px; margin-top:12px; color:var(--muted); font-size:13px">Content below — keep scrolling</div>
+        </div>
+      </div>
+      <pre>.sticky .box{ position: sticky; top: 8px; }</pre>
+    </section>
+
+    <!-- z-index layering -->
+    <section class="card">
+      <h2>z-index (stacking)</h2>
+      <p class="explain">Control which elements appear on top. Only works on positioned elements (other than static).</p>
+      <div class="example layer-demo">
+        <div class="box one">1</div>
+        <div class="box two">2</div>
+        <div class="box three">3</div>
+      </div>
+      <pre>.box.one{ z-index:10 } /* on top */
+.box.two{ z-index:5 }
+.box.three{ z-index:1 } /* below */</pre>
+    </section>
+
+  </main>
+
+  <footer>
+    Tip: change the CSS in the pre blocks and try saving the file to experiment. This demo shows the visual differences between position values — combine them in real layouts as needed.
+  </footer>
+
+  <!-- no JS required; purely CSS examples -->
+</body>
+</html>

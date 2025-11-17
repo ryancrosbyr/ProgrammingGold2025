@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Three Columns - 4 Techniques</title>
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="collumnstyles.css">
+</head>
+<body>
+  <h1>Creating Three Columns with Different CSS Techniques</h1>
+  
+  <!-- ===========================
+       1. FLOAT EXAMPLE
+       =========================== -->
+  <section class="float-columns">
+    <h2>1. Using Floats</h2>
+
+    <div class="column float-left">Left Column</div>
+    <div class="column float-left center-column">Center Column</div>
+    <div class="column float-right">Right Column</div>
+
+    <div class="clearfix"></div>
+  </section>
+
+  <!-- ===========================
+       2. ABSOLUTE POSITIONING
+       =========================== -->
+  <section class="position-columns">
+    <h2>2. Using Absolute Positioning</h2>
+
+    <div class="container">
+      <div class="column absolute-left">Left Column</div>
+      <div class="column absolute-center">Center Column</div>
+      <div class="column absolute-right">Right Column</div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       3. FLEXBOX
+       =========================== -->
+  <section class="flex-columns">
+    <h2>3. Using Flexbox</h2>
+
+    <div class="flex-container">
+      <div class="column">Left Column</div>
+      <div class="column">Center Column</div>
+      <div class="column">Right Column</div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       4. CSS GRID
+       =========================== -->
+  <section class="grid-columns">
+    <h2>4. Using CSS Grid</h2>
+
+    <div class="grid-container">
+      <div class="column">Left Column</div>
+      <div class="column">Center Column</div>
+      <div class="column">Right Column</div>
+    </div>
+  </section>
+
+</body>
+</html>

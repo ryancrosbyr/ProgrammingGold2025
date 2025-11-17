@@ -1,0 +1,35 @@
+/*Relative Positioning */
+/**
+Relative positioning is positioned relative to its originional place in the natural flow. 
+It is not removed, and still occupies its origional position. 
+Top right bottom and left can be used to nudge it around. If you use this and want other elements to refil this space, then you need to reposition those other elements. 
+It can overlap with other elements. 
+And is often used as a container for child elements. 
+This is useful for setting child elements with the absolute position. As absolute positioning will use the parent with a non static position. If not uses the browser. 
+Note: when using left and right it actually moves the block in the opposite direction to what you think. 
+So if you are moving the box 200px to the left. It will actually move 200px to the right. As the left edge is moving 200px away from the left point of its container
+
+**/
+
+.box{
+width: 100px; 
+height: 100px;
+border: solid;
+background-color: red;
+text-align: center;
+}
+#miniB{
+    background:yellow;
+    width: 50px; 
+    height: 50px;
+    border: solid;
+    
+}
+
+#B{
+  position: relative;
+  top:100px;
+  left: 300px;
+  background: blue;
+}
+

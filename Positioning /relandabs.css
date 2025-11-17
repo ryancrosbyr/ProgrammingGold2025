@@ -1,0 +1,30 @@
+.box{
+width: 100px; 
+height: 100px;
+border: solid;
+background-color: red;
+text-align: center;
+}
+
+
+#B{
+  background: blue;
+  position: absolute;
+  top: 50px;
+  left: 500px;
+  margin:20px;
+  width: 200px;
+  height: 200px;
+} 
+
+
+#miniB{
+    background:yellow;
+    width: 50px; 
+    height: 50px;
+    border: solid;
+    text-align: center;
+    position: relative;
+    top: 100px;
+    left: 100px;
+}

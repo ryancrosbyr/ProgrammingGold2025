@@ -1,0 +1,116 @@
+/* ===========================
+   GLOBAL PAGE STYLES
+   =========================== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+section {
+  background: white;
+  padding: 20px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.column {
+  border-radius: 6px;
+  padding: 15px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* ===========================
+   1. FLOAT EXAMPLE
+   =========================== */
+.float-columns .column {
+  width: 30%;              /* Three columns = 30% each */
+  background: #e3f2fd;     /* Light blue */
+  min-height: 100px;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+/* Add spacing for the center column */
+.center-column {
+  margin: 0 5%;
+}
+
+/* Clearfix fix for floats */
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* ===========================
+   2. ABSOLUTE POSITIONING
+   =========================== */
+.position-columns .container {
+  position: relative;       /* Parent for absolute positioning */
+  height: 200px;
+  background: #fff9c4;      /* Light yellow */
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+}
+
+.position-columns .column {
+  position: absolute;
+  width: 30%;
+  background: #c8e6c9;      /* Light green */
+}
+
+.absolute-left {
+  left: 10px;
+}
+
+.absolute-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.absolute-right {
+  right: 10px;
+}
+
+/* ===========================
+   3. FLEXBOX EXAMPLE
+   =========================== */
+.flex-container {
+  display: flex;                  /* Enable Flexbox */
+  justify-content: space-between; /* Space columns evenly */
+  gap: 20px;                      /* Add spacing between items */
+}
+
+.flex-container .column {
+  flex: 1;                        /* Equal width for each */
+  background: #bbdefb;            /* Light blue */
+  min-height: 100px;
+}
+
+/* ===========================
+   4. CSS GRID EXAMPLE
+   =========================== */
+.grid-container {
+  display: grid;                  /* Enable Grid */
+  grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
+  gap: 20px;                      /* Space between columns */
+}
+
+.grid-container .column {
+  background: #ffcdd2;            /* Light red */
+  min-height: 100px;
+}
